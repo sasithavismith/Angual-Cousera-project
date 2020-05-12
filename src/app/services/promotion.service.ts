@@ -9,14 +9,14 @@ import { from } from 'rxjs';
 export class PromotionService {
 
   constructor() { }
-  getPromotions():Promotion[]{
-    return PROMOTIONS;
+  getPromotions():Promise<Promotion[]>{
+    return Promise.resolve(PROMOTIONS);
    }
-   getPromotion(id: string):Promotion{
-     return PROMOTIONS.filter((prom)=>(prom.id===id))[0];
+   getPromotion(id: string):Promise<Promotion>{
+     return Promise.resolve(PROMOTIONS.filter((prom)=>(prom.id===id))[0]);
    }
-   getFeaturedPromotion():Promotion{
-     return PROMOTIONS.filter((prom)=>(prom.featured))[0];
+   getFeaturedPromotion():Promise<Promotion>{
+     return Promise.resolve(PROMOTIONS.filter((prom)=>(prom.featured))[0]);
    }
  
 }
