@@ -58,17 +58,20 @@
     <h2>Corporate Leadership</h2>
     
 
-      <mat-grid-list cols="1" rowHeight="200px">
-        <mat-grid-tile *ngFor="let leader of leaders">
-          <img height="100px" src={{leader.image}} >
-          <mat-list>
-          <h4 matLine>{{leader.name}}</h4>
+      <mat-list *ngIf="leaders">
+        <mat-list-item *ngFor="let leader of leaders">
+          <img mat-list-avatar src={{leader.image}} alt={{leader.name}}>
+         
+          <h4 matLine>{{leader.name}} {{leader.abbr}}</h4>
           <p matLine>{{leader.designation}}</p>
           <p matLine>
               <span>{{leader.description}}</span></p>
-            </mat-list>
-        </mat-grid-tile>
-      </mat-grid-list>
+            
+        </mat-list-item>
+      </mat-list>
 
+  </div>
+  <div fxFlex [hidden]="leaders">
+    <mat-spinner></mat-spinner><h4>Loading .... please Wait</h4>
   </div>
 </div>
