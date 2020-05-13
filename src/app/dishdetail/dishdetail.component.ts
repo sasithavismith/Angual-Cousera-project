@@ -3,7 +3,8 @@ import{Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Dish} from '../shared/dish';
 import {DishService} from '../services/dish.service';
-import { from } from 'rxjs';
+import { of, from } from 'rxjs';
+import{delay} from 'rxjs/operators';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class DishdetailComponent implements OnInit {
   ngOnInit(): void {
     let id= this.route.snapshot.params['id'];
     this.dishService.getDish(id)
-    .then(dish=>this.dish=dish);
+    .subscribe(dish=>this.dish=dish);
   }
   goBack():void{
     this.location.back();
