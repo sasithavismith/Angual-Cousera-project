@@ -16,6 +16,7 @@ import{MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import{MatSliderModule} from '@angular/material/slider';
 import { AppComponent } from './app.component';
 
 
@@ -67,6 +68,7 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
     MatDialogModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    MatSliderModule,
     MatInputModule,
     MatCheckboxModule,
     FormsModule,
