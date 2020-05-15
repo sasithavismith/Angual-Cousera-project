@@ -6,6 +6,7 @@
     fxLayoutGap="10px" 
     fxLayoutGap.xs="0">
 
+
   <div fxFlex="40" *ngIf="dish">
     <mat-card >
         <mat-card-header>
@@ -34,30 +35,54 @@
   </div>
 
   <div fxFlex="40" *ngIf="dish">
-      <mat-list >
+      <mat-list>
+        <p>{{ commentForm.value  | json}} {{commentForm.status| json}}</p>
       <h3>Comments</h3>
       <mat-list-item *ngFor="let comment of dish.comments">
         <h4 matLine>{{comment.comment}}</h4>
         <p matLine>{{comment.rating}} Stars</p>
-      
-        <p matLine>
-          <span>{{comment.Author}}</span>
+      <p matLine>
+          <span>--{{comment.author}} {{comment.date | date : 'dd-MM-yyyy'}}</span>
         </p>
       </mat-list-item>
-      </mat-list>
-    <mat-list>
+    </mat-list>
+    <mat-list *ngIf="commentForm.valid">
       <mat-list-item>
-        <h4 matLine></h4>
+        <h4 matLine>{{commentForm.get('comment').value}}</h4>
+        <p matLine>{{commentForm.get('rating').value}} stars</p>
+        <p matLine>
+          <span> -- {{commentForm.get('author').value}} </span>
+         
+        </p>
       </mat-list-item>
+
     </mat-list>
     
-       
+    
+      <form novalidate [formGroup]="commentForm" #cfrom="ngForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field class="full-width">
+            <input matInput formControlName="author" placeholder="Author Name" type="text" required>
+         <mat-error *ngIf="formErrors.author">
+           {{formErrors.author}}
+         </mat-error>
+          </mat-form-field>
+        </p>
+       <p><mat-slider min="1" max="5" step="1" thumbLabel tickInterval="1" matInput formControlName="rating"></mat-slider></p>
+           <p>
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="comment" placeholder="Your Feedback" rows=12 required></textarea>
+         
+        </mat-form-field>
+        </p>
+        <button type="submit"  mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">Submit</button>
+        </form>
+    </div>
       
-  </div>
-
-  
   <div fxFlex [hidden]="dish">
     <mat-spinner></mat-spinner><h4>Loading .... please Wait</h4>
   </div>
-
+  
+    
 </div>
+
