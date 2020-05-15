@@ -36,7 +36,6 @@
 
   <div fxFlex="40" *ngIf="dish">
       <mat-list>
-        <p>{{ commentForm.value  | json}} {{commentForm.status| json}}</p>
       <h3>Comments</h3>
       <mat-list-item *ngFor="let comment of dish.comments">
         <h4 matLine>{{comment.comment}}</h4>
