@@ -38,7 +38,6 @@
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us Your Feedback</h3>
-    <p>{{ feedbackForm.value  | json}} {{feedbackForm.status| json}}</p>
     <form novalidate [formGroup]="feedbackForm" #ffrom="ngForm" (ngSubmit)="onSubmit()">
 <p>
   <mat-form-field class="half-width">
