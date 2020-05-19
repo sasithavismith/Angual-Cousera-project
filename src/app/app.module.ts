@@ -43,6 +43,7 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import {baseURL} from './shared/baseurl';
 import { importExpr } from '@angular/compiler/src/output/output_ast';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 
@@ -56,7 +57,8 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
