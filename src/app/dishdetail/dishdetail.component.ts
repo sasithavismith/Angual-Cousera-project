@@ -7,7 +7,9 @@ import { of, from } from 'rxjs';
 import{delay, switchMap} from 'rxjs/operators';
 import{Comment} from  '../shared/comment';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import{trigger,state,animate,style,transition} from '@angular/animations';
+import {visibility} from '../animations/app.animation';
+import{flyInOut,expand} from '../animations/app.animation';
+
 import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 
@@ -16,19 +18,14 @@ import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.css'],
+  host:{
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+      },
   animations: [
-    trigger('visibility',[
-      state('shown',style({
-        transform: 'scale(1.0)',
-        opacity: 1
-      })),
-      state('hidden', style({
-        transform: 'scale(0.5)',
-        opacity: 0
-      })),
-      transition('* => *', animate('0.5s ease-in-out'))
-    ])
-
+   flyInOut(),
+visibility(),
+expand()
   ]
 })
 

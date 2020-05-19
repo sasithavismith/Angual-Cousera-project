@@ -1,12 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import{FormBuilder,FormGroup,Validators, ControlContainer} from '@angular/forms';
 import {Feedback,ContactType} from '../shared/feedback'; 
+import{flyInOut} from '../animations/app.animation';
 import { from } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+  host:{
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+      },
+      animations:[
+        flyInOut()
+      ]
 })
 export class ContactComponent implements OnInit {
   feedbackForm:FormGroup;
