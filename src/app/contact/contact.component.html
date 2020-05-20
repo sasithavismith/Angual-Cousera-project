@@ -37,7 +37,31 @@
   </div>
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
+    <mat-list>
     <h3>Send us Your Feedback</h3>
+    <mat-list-item *ngFor="let feedback of feedbacks">
+      <h4 matLine>{{feedback.firstname}}</h4>
+      <p matLine>{{feedback.lastname}} </p>
+      <p matLine>{{feedback.telnum}} </p>
+      <p matLine>{{feedback.email}} </p>
+      <p matLine>{{feedback.agree}} </p>
+      <p matLine>{{feedback.contacttype}} </p>
+      <p matLine>{{feedback.message}} </p>
+    </mat-list-item>
+  </mat-list>
+  <mat-list *ngIf="feedbackForm.valid">
+    <mat-list-item>
+      <h4 matLine>{{feedbackForm.get('firstname').value}}</h4>
+      <p matLine>{{feedbackForm.get('lastname').value}}</p>
+      <p matLine>{{feedbackForm.get('telnum').value}}</p>
+      <p matLine>{{feedbackForm.get('email').value}}</p>
+      <p matLine>{{feedbackForm.get('agree').value}}</p>
+      <p matLine>{{feedbackForm.get('contacttype').value}}</p>
+      <p matLine>{{feedbackForm.get('message').value}}</p>
+     
+    </mat-list-item>
+
+  </mat-list>
     <form novalidate [formGroup]="feedbackForm" #ffrom="ngForm" (ngSubmit)="onSubmit()">
 <p>
   <mat-form-field class="half-width">
