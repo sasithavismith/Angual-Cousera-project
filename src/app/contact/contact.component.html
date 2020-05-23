@@ -37,32 +37,11 @@
   </div>
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
-    <mat-list>
+  
     <h3>Send us Your Feedback</h3>
-    <mat-list-item *ngFor="let feedback of feedbacks">
-      <h4 matLine>{{feedback.firstname}}</h4>
-      <p matLine>{{feedback.lastname}} </p>
-      <p matLine>{{feedback.telnum}} </p>
-      <p matLine>{{feedback.email}} </p>
-      <p matLine>{{feedback.agree}} </p>
-      <p matLine>{{feedback.contacttype}} </p>
-      <p matLine>{{feedback.message}} </p>
-    </mat-list-item>
-  </mat-list>
-  <mat-list *ngIf="feedbackForm.valid">
-    <mat-list-item>
-      <h4 matLine>{{feedbackForm.get('firstname').value}}</h4>
-      <p matLine>{{feedbackForm.get('lastname').value}}</p>
-      <p matLine>{{feedbackForm.get('telnum').value}}</p>
-      <p matLine>{{feedbackForm.get('email').value}}</p>
-      <p matLine>{{feedbackForm.get('agree').value}}</p>
-      <p matLine>{{feedbackForm.get('contacttype').value}}</p>
-      <p matLine>{{feedbackForm.get('message').value}}</p>
-     
-    </mat-list-item>
+  
 
-  </mat-list>
-    <form novalidate [formGroup]="feedbackForm" #ffrom="ngForm" (ngSubmit)="onSubmit()">
+    <form novalidate [formGroup]="feedbackForm" #ffrom="ngForm" (ngSubmit)="onSubmit()" [hidden]="feedback || spinnerVisibility" [@expand]>
 <p>
   <mat-form-field class="half-width">
     <input  matInput formControlName="firstname" placeholder="FirstName" type="text" required>
@@ -113,6 +92,37 @@
   </mat-form-field>
 </p>
 <button type="submit"  mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
-    </form>
+<div [hidden]="!spinnerVisibility">
+  <h3>Submitting Form</h3>
+<mat-spinner></mat-spinner>
+</div>
+</form>
+    
+ 
+  <div *ngIf="feedback" [@expand]>
+    <h3>Your Submission</h3>
+    <p>
+      <span>First Name:&nbsp;{{ feedback.firstname }}</span>
+    </p>
+    <p>
+      <span>Last Name:&nbsp;{{ feedback.lastname }}</span>
+    </p>
+    <p>
+      <span>Tel. Number:&nbsp;{{ feedback.telnum }}</span>
+    </p>
+    <p>
+      <span>Email:&nbsp;{{ feedback.email }}</span>
+    </p>
+    <p>
+      <span>Contact You?:&nbsp;{{ feedback.agree }}</span>
+    </p>
+    <p>
+      <span>How?:&nbsp;{{ feedback.contacttype }}</span>
+    </p>
+    <p>
+      <span>Feedback:&nbsp;{{ feedback.message }}</span>
+    </p>      
   </div>
+  </div>
+  
 </div>

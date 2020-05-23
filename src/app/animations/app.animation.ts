@@ -40,7 +40,7 @@ export function expand(){
             style({transform: 'translateX(-50%)', 
             opacity:0
         }),
-            animate('200ms ease-in', style({
+            animate('500ms ease-in', style({
                 opacity: 1,
                 transform: 'translates(0)'
             }))
